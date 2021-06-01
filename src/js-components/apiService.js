@@ -1,6 +1,7 @@
 const  REQUEST_KEY = '21864650-2d6f5ba10b4ef36ee5398956b';
 const MAIN_LINK = 'https://pixabay.com/api/';
 
+
 export default class ServiceWithPictures {
 
     constructor() {
