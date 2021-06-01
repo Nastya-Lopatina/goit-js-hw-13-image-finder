@@ -1,5 +1,5 @@
-const  REQUEST_KEY = '21864650-2d6f5ba10b4ef36ee5398956b';
-const MAIN_LINK = 'https://pixabay.com/api/';
+const  KEY = '21864650-2d6f5ba10b4ef36ee5398956b';
+const LINK = 'https://pixabay.com/api/';
 
 
 export default class ServiceWithPictures {
@@ -11,7 +11,7 @@ export default class ServiceWithPictures {
 
     async imageSearchByRequest() {
         try {
-            const response = await fetch(`${MAIN_LINK}?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${REQUEST_KEY}`);
+            const response = await fetch(`${LINK}?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${KEY}`);
             const pictures = await response.json();
             
             this.incrementPage();

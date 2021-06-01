@@ -23,7 +23,8 @@ const refs ={
  }
 
 refs.searthForm.addEventListener('input',debounce(onImageSearch,500));
-loadMoreBtn.refs.button.addEventListener('click',imageSearchByRequest)
+loadMoreBtn.refs.button.addEventListener('click',imageSearchByRequest);
+
 
 
 function onImageSearch (e){
@@ -31,7 +32,7 @@ function onImageSearch (e){
     serviceWithPictures.queri =  e.target.value;
 
     if(serviceWithPictures.queri === ' '){
-        return error('Invalid input parameter!');
+        error('Invalid input parameter!');
     }
 
     loadMoreBtn.show();
@@ -47,10 +48,11 @@ function onImageSearch (e){
         addMarkupForPictures(data);
 
         loadMoreBtn.enable();
-
         loadMoreBtn.refs.button.scrollIntoView({
-             behavior: 'smooth', 
-             block: 'end', });
+            behavior: 'smooth',
+            block: 'end',
+        });
+        
     })
 }
 
