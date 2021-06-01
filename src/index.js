@@ -29,9 +29,9 @@ loadMoreBtn.refs.button.addEventListener('click',imageSearchByRequest);
 
 function onImageSearch (e){
 
-    serviceWithPictures.queri =  e.target.value;
+    serviceWithPictures.query =  e.target.value;
 
-    if(serviceWithPictures.queri === ' '){
+    if(serviceWithPictures.query === ' '){
         error('Invalid input parameter!');
     }
 
