@@ -2,8 +2,8 @@ var debounce = require('lodash.debounce');
 
 import pictureTpl from './templates/picture-card.hbs';
 import LoadMoreBtn from './js-components/load-more-btn.js';
-import ImagesApi from './js-components/apiService';
-import './style.css'
+import ServiceWithPictures from './js-components/apiService';
+//import './style.css'
 
 import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/core/dist/PNotify.css';
@@ -21,36 +21,37 @@ const refs ={
  }
 
 refs.searthForm.addEventListener('input',debounce(onImageSearch,500));
-loadMoreBtn.refs.button.addEventListener('click',fetchPictures)
+loadMoreBtn.refs.button.addEventListener('click',imageSearchByRequest)
 
-const imagesApi = new ImagesApi();
+const serviceWithPictures = new ServiceWithPictures();
 
 function onImageSearch (e){
-    imagesApi.queri =  e.target.value;
 
-    if(imagesApi.queri === ' '){
+    serviceWithPictures.queri =  e.target.value;
+
+    if(serviceWithPictures.queri === ' '){
         return error('Invalid input parameter!');
     }
+
     loadMoreBtn.show();
-    imagesApi.resetPage();
+    serviceWithPictures.resetPage();
     clearingMarkup();
-    fetchPictures();
+    imageSearchByRequest;
 }
 
-
-function fetchPictures() {
+async function imageSearchByRequest () {
     loadMoreBtn.disable();
 
-    imagesApi.fetchPictures().then(data => {
+    serviceWithPictures.imageSearchByRequest().then(data => {
         addMarkupForPictures(data);
-
         loadMoreBtn.enable();
-
         loadMoreBtn.refs.button.scrollIntoView({
-            behavior: 'smooth', 
-            block: 'end', });
+             behavior: 'smooth', 
+             block: 'end', });
     })
 }
+
+
 
 function addMarkupForPictures(data){
     refs.gallery.insertAdjacentHTML('beforeend',pictureTpl(data));
